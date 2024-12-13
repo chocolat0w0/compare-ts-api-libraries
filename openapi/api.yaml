@@ -64,6 +64,29 @@ paths:
                   - $ref: "#/components/schemas/Http422UnprocessableEntity"
                   - $ref: "#/components/schemas/Http422InvalidRequestBody"
           description: 登録できない
+  /mushrooms/{mushroom_id}/:
+    get:
+      summary: きのこの情報を取得する。
+      tags:
+        - きのこ
+      parameters:
+        - $ref: "#/components/parameters/MushroomID"
+      responses:
+        "200":
+          description: 正常に取得
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - type: object
+                    required:
+                      - results
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Mushroom"
 
 components:
   parameters:
@@ -77,6 +100,14 @@ components:
       name: offset
       schema:
         type: integer
+    MushroomID:
+      in: path
+      name: mushroom_id
+      description: きのこID
+      required: true
+      schema:
+        type: string
+        format: uuid
 
   schemas:
     Http422UnprocessableEntity:

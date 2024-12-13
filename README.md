@@ -1,50 +1,32 @@
-# React + TypeScript + Vite
+# compare-ts-api-libraries
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Code Generator Comparison for TypeScript from OpenAPI - December 2024
 
-Currently, two official plugins are available:
+## openapi-typescript
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Install
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+% npm install openapi-fetch
+% npm install --save-dev openapi-typescript
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Generate client codes
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+% npm run openapi-typescript
+
+> compare-ts-api-libraries@0.0.0 openapi-typescript
+> openapi-typescript ./openapi/api.yaml -o ./src/openapi-typescript-client/schema.d.ts
+
+✨ openapi-typescript 7.4.4
+(node:85138) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+🚀 ./openapi/api.yaml → ./src/openapi-typescript-client/schema.d.ts [16.2ms]
+```
+
+Ignore warning...
+
+### call APIs
+
+See `src/OpenapiTypescriptComponent.tsx`
