@@ -30,3 +30,21 @@ Ignore warning...
 ### call APIs
 
 See `src/OpenapiTypescriptComponent.tsx`
+
+## @openapitools/openapi-generator-cli
+
+### Install
+
+```
+% npm install --save-dev @openapitools/openapi-generator-cli
+```
+
+### Generate client codes
+
+Create `openapitools.json` file.
+
+Run command.
+
+```
+% npm run openapi-generator-cli
+```

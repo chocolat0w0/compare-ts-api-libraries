@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+apis/DefaultApi.ts
+apis/index.ts
+index.ts
+models/Http422InvalidRequestBody.ts
+models/Http422InvalidRequestBodyCode.ts
+models/Http422UnprocessableEntity.ts
+models/Mushroom.ts
+models/MushroomConditionsValue.ts
+models/MushroomsGet200Response.ts
+models/MushroomsMushroomIdGet200Response.ts
+models/MushroomsPost422Response.ts
+models/PaginationParts.ts
+models/index.ts
+runtime.ts
