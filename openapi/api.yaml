@@ -1,0 +1,173 @@
+openapi: "3.0.3"
+
+info:
+  title: 検証用 API
+  license:
+    name: © chocolat0w0
+  version: 1.0.0
+
+servers:
+  - url: https://api.example.com
+    description: 本番環境
+
+tags:
+  - name: きのこ
+
+paths:
+  /mushrooms/:
+    get:
+      summary: きのこ情報の一覧を取得する。
+      tags:
+        - きのこ
+      parameters:
+        - $ref: "#/components/parameters/PaginationLimit"
+        - $ref: "#/components/parameters/PaginationOffset"
+      responses:
+        "200":
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - type: object
+                    required:
+                      - results
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Mushroom"
+                  - $ref: "#/components/schemas/PaginationParts"
+    post:
+      summary: きのこを登録する。
+      tags:
+        - きのこ
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/Mushroom"
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Mushroom"
+          description: 正常に作成
+        "422":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/Http422UnprocessableEntity"
+                  - $ref: "#/components/schemas/Http422InvalidRequestBody"
+          description: 登録できない
+
+components:
+  parameters:
+    PaginationLimit:
+      in: query
+      name: limit
+      schema:
+        type: integer
+    PaginationOffset:
+      in: query
+      name: offset
+      schema:
+        type: integer
+
+  schemas:
+    Http422UnprocessableEntity:
+      type: object
+      properties:
+        detail:
+          type: string
+          example: 処理できませんでした
+        code:
+          type: string
+          example: unprocessable_entity
+    Http422InvalidRequestBody:
+      type: object
+      properties:
+        "*":
+          type: array
+          items:
+            type: string
+            example: この項目は必須です。
+        code:
+          type: object
+          properties:
+            "*":
+              type: array
+              items:
+                type: string
+                example: required
+
+    PaginationParts:
+      type: object
+      required:
+        - count
+        - next
+        - previous
+      properties:
+        count:
+          type: integer
+          description: 総数
+          example: 100
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: 次のページへのURL
+          example: "https://api.example.com/?limit=100&offset=500"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          description: 前のページへのURL
+          example: "https://api.example.com/?limit=100&offset=300"
+
+    Mushroom:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - orderable
+        - size
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: きのこID
+        name:
+          type: string
+          description: きのこ名
+          example: しめじ
+        description:
+          type: string
+          description: きのこの概要
+          example: きのこの概要
+        orderable:
+          type: boolean
+          description: 購入可能か
+        size:
+          type: string
+          description: 大きさの種類
+          enum: [small, medium, large]
+        tastiness:
+          type: integer
+          description: おいしさスコア
+          example: 90
+          nullable: true
+        conditions:
+          type: object
+          description: 状態
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: number
+          example: { "color": "red", "height": 50 }
