@@ -48,3 +48,22 @@ Run command.
 ```
 % npm run openapi-generator-cli
 ```
+
+## @hey-api/openapi-ts
+
+### Install
+
+```
+% npm install @hey-api/client-fetch
+% npm install --save-dev @hey-api/openapi-ts
+```
+
+### Generate client codes
+
+```
+% npm run hey-api-openapi-ts
+```
+
+### call APIs
+
+See `src/HeyApiOpenapiTsComponent.tsx`
