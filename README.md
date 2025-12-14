@@ -6,26 +6,22 @@ Code Generator Comparison for TypeScript from OpenAPI - December 2024
 
 ### Install
 
-```
-% npm install openapi-fetch
-% npm install --save-dev openapi-typescript
+```sh
+npm i -D openapi-typescript
+npm i openapi-fetch
 ```
 
 ### Generate client codes
 
+```sh
+npm run openapi-typescript-3_0
+
+> compare-ts-api-libraries@0.0.0 openapi-typescript-3_0
+> openapi-typescript ./openapi/api-3_0.yaml -o ./src/openapi-3_0-typescript-client/schema.d.ts
+
+✨ openapi-typescript 7.10.1
+🚀 ./openapi/api-3_0.yaml → ./src/openapi-3_0-typescript-client/schema.d.ts [27.4ms]
 ```
-% npm run openapi-typescript
-
-> compare-ts-api-libraries@0.0.0 openapi-typescript
-> openapi-typescript ./openapi/api.yaml -o ./src/openapi-typescript-client/schema.d.ts
-
-✨ openapi-typescript 7.4.4
-(node:85138) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-🚀 ./openapi/api.yaml → ./src/openapi-typescript-client/schema.d.ts [16.2ms]
-```
-
-Ignore warning...
 
 ### call APIs
 
