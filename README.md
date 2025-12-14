@@ -32,7 +32,7 @@ See `src/OpenapiTypescriptComponent.tsx`
 ### Install
 
 ```sh
-npm i -D  @openapitools/openapi-generator-cli
+npm i -D @openapitools/openapi-generator-cli
 ```
 
 ### Generate client codes
@@ -58,15 +58,17 @@ Ser `src/OpenapiGeneratorCliComponent.tsx`
 
 ### Install
 
-```
-% npm install @hey-api/client-fetch
-% npm install --save-dev @hey-api/openapi-ts
+```sh
+npm i -D @hey-api/openapi-ts
 ```
 
 ### Generate client codes
 
-```
-% npm run hey-api-openapi-ts
+```sh
+npm run hey-api-openapi-ts-3_0
+
+> compare-ts-api-libraries@0.0.0 hey-api-openapi-ts-3_0
+> openapi-ts -i ./openapi/api-3_0.yaml -o ./src/hey-api-openapi-ts-client/api-3_0 -c @hey-api/client-fetch
 ```
 
 ### Call APIs

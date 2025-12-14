@@ -11,7 +11,9 @@
     "openapi-typescript-3_0": "openapi-typescript ./openapi/api-3_0.yaml -o ./src/openapi-typescript-gen/schema-3_0.d.ts",
     "openapi-typescript-3_1": "openapi-typescript ./openapi/api-3_1.yaml -o ./src/openapi-typescript-gen/schema-3_1.d.ts",
     "openapi-generator-cli-3_0": "openapi-generator-cli generate --generator-key api-3_0",
-    "openapi-generator-cli-3_1": "openapi-generator-cli generate --generator-key api-3_1"
+    "openapi-generator-cli-3_1": "openapi-generator-cli generate --generator-key api-3_1",
+    "hey-api-openapi-ts-3_0": "openapi-ts -i ./openapi/api-3_0.yaml -o ./src/hey-api-openapi-ts-gen/api-3_0 -c @hey-api/client-fetch",
+    "hey-api-openapi-ts-3_1": "openapi-ts -i ./openapi/api-3_1.yaml -o ./src/hey-api-openapi-ts-gen/api-3_1 -c @hey-api/client-fetch"
   },
   "dependencies": {
     "openapi-fetch": "0.15.0",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",
+    "@hey-api/openapi-ts": "0.89.0",
     "@openapitools/openapi-generator-cli": "2.25.2",
     "@types/node": "24.10.1",
     "@types/react": "19.2.5",
