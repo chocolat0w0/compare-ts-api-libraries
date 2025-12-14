@@ -23,7 +23,7 @@ npm run openapi-typescript-3_0
 🚀 ./openapi/api-3_0.yaml → ./src/openapi-3_0-typescript-client/schema.d.ts [27.4ms]
 ```
 
-### call APIs
+### Call APIs
 
 See `src/OpenapiTypescriptComponent.tsx`
 
@@ -31,19 +31,28 @@ See `src/OpenapiTypescriptComponent.tsx`
 
 ### Install
 
-```
-% npm install --save-dev @openapitools/openapi-generator-cli
+```sh
+npm i -D  @openapitools/openapi-generator-cli
 ```
 
 ### Generate client codes
 
 Create `openapitools.json` file.
 
+Set up Docker.
+
 Run command.
 
 ```
-% npm run openapi-generator-cli
+npm run openapi-generator-cli-3_0
+
+> compare-ts-api-libraries@0.0.0 openapi-generator-cli-3_0
+> openapi-generator-cli generate --generator-key api-3_0
 ```
+
+### Call APIs
+
+Ser `src/OpenapiGeneratorCliComponent.tsx`
 
 ## @hey-api/openapi-ts
 
@@ -60,6 +69,6 @@ Run command.
 % npm run hey-api-openapi-ts
 ```
 
-### call APIs
+### Call APIs
 
 See `src/HeyApiOpenapiTsComponent.tsx`
